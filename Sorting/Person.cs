@@ -5,7 +5,14 @@
 		public int Id { get; set; }
 		public float Height { get; set; }
 		public int Age { get; set; }
-	}
+
+        public Person(int id, float height, int age)
+        {
+            Id = id;
+			Height = height;
+			Age = age;
+        }
+    }
 
 	public class HeightComparison : Comparer<Person>
 	{
