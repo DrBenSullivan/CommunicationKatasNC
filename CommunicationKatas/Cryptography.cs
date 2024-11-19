@@ -1,51 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace CommunicationKatas
 {
-    public class Cryptography
-    {
-        public string ROT13Encoder(string message)
-        {
-            string result = "";
+	public class Cryptography
+	{
+		public string ROT13Encoder(string message)
+		{
+			var sb = new StringBuilder();
 
-            foreach (char c in message)
-            {
-                int start = 0;
-                int end = 0;
+			foreach (char c in message)
+			{
+				if (!char.IsLetter(c))
+				{
+					sb.Append(c);
+					continue;
+				}
 
-                if (Char.IsUpper(c))
-                {
-                    start = (int)'A';
-                    end = (int)'Z';
-                }
+				int startOfValidAsciiValues = char.IsUpper(c)
+					? (int)'A'
+					: (int)'a';
 
-                else if (Char.IsLower(c))
-                {
-                    start = (int)'a';
-                    end = (int)'z';
-                } else { result += c; continue; }
+				int endOfValidAsciiValues = char.IsUpper(c)
+					? (int)'Z' + 1
+					: (int)'z' + 1;
 
-                int current = (int)c;
-                current += 13;
+				int unloopedAsciiValue = (int)c + 13;
 
-                if (current > end)
-                {
-                    current -= end;
-                    current += start - 1;
-                    result += (char)current;
-                }
-                else
-                {
-                    result += (char)current;
-                }
+				int shiftedAsciiValue = unloopedAsciiValue >= endOfValidAsciiValues
+					? startOfValidAsciiValues + (unloopedAsciiValue % endOfValidAsciiValues)
+					: unloopedAsciiValue;
 
-            }
+				sb.Append((char)shiftedAsciiValue);
+			}
 
-            return result;
-        }
-    }
+			return sb.ToString();
+		}
+	}
 }

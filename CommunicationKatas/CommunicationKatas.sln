@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommunicationKatas", "Commu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommunicationKatasTest", "..\CommunicationKatasTest\CommunicationKatasTest.csproj", "{12B09E34-5053-436F-93BB-E8CADE792B44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorting", "..\Sorting\Sorting.csproj", "{8F44327D-DD25-4D36-8957-8C19A39E939B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sorting", "..\Sorting\Sorting.csproj", "{C2FE3703-2471-4705-A2B1-2ACCD563D242}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{12B09E34-5053-436F-93BB-E8CADE792B44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12B09E34-5053-436F-93BB-E8CADE792B44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12B09E34-5053-436F-93BB-E8CADE792B44}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8F44327D-DD25-4D36-8957-8C19A39E939B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8F44327D-DD25-4D36-8957-8C19A39E939B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8F44327D-DD25-4D36-8957-8C19A39E939B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8F44327D-DD25-4D36-8957-8C19A39E939B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2FE3703-2471-4705-A2B1-2ACCD563D242}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2FE3703-2471-4705-A2B1-2ACCD563D242}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2FE3703-2471-4705-A2B1-2ACCD563D242}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2FE3703-2471-4705-A2B1-2ACCD563D242}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

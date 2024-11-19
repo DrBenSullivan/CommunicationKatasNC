@@ -1,52 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CommunicationKatas
+﻿namespace CommunicationKatas
 {
-    public class NumberManipulator
-    {
-        public double SumMiddleRange(double[] numbers)
-        {
-            double lowestNumber = double.MaxValue;
-            double highestNumber = double.MinValue;
-            double result = 0;
+	public class NumberManipulator
+	{
+		public double SumMiddleRange(double[] numbers)
+		{
+			double lowestNumber = double.MaxValue;
+			double highestNumber = double.MinValue;
 
-            foreach (double number in numbers)
-            {
-                if (number < lowestNumber) lowestNumber = number;
-                if (number > highestNumber) highestNumber = number;
-            }
+			foreach (double number in numbers)
+			{
+				if (number < lowestNumber) lowestNumber = number;
 
-            foreach (double number in numbers)
-            {
-                if (number != lowestNumber && number != highestNumber) result += number;
-            }
+				if (number > highestNumber) highestNumber = number;
+			}
 
-            return result;
-        }
+			return numbers.Where(n => n != lowestNumber && n != highestNumber).Sum();
+		}
 
-        public double GetMean(double[] numbers)
-        {
-            if (numbers.Length == 0) return 0;
+		public double GetMean(double[] numbers)
+		{
+			if (numbers.Length == 0) return 0;
 
-            double total = 0;
-            foreach (double number in numbers) { total += number; }
-            return total / numbers.Length;
-        }
+			return numbers.Sum() / numbers.Length;
+		}
 
-        public int GetAsciiSum(string str)
-        {
-            int total = 0;
+		public int GetAsciiSum(string str)
+		{
+			int total = 0;
 
-            foreach (char c in str) 
-            { 
-                if (Char.IsAsciiDigit(c) || Char.IsAsciiLetter(c)) total += (int)c;
-            }
+			foreach (char c in str)
+			{
+				if (Char.IsLetterOrDigit(c)) total += (int)c;
+			}
 
-            return total;
-        }
-    }
+			return total;
+		}
+	}
 }
