@@ -31,7 +31,7 @@ namespace CommunicationKatasTest
 		public static TestCaseData[] getMeanTestData =
 		[
 			new(new[] { 1d, 2d, 3d }, 2d ),
-			new(new[] { 1d, 2d, 3d, 4d, 5d }, 5d),
+			new(new[] { 1d, 2d, 3d, 4d, 5d }, 3d),
 			new(Array.Empty<double>(), 0d)
 		];
 
