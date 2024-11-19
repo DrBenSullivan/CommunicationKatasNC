@@ -1,4 +1,4 @@
-﻿public interface ISortable
+﻿public interface ISortable<T>
 {
-    public int[] Sort(int[] arrayToSort);
+	public T[] Sort(T[] arrayToSort, IComparer<T> comparer);
 }

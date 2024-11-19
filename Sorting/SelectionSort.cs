@@ -1,28 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Linq;
+﻿//namespace Sorting
+//{
+//	public class SelectionSort : ISortable
+//	{
+//		public int[] Sort(int[] arrayToSort)
+//		{
+//			for (int i = 0; i < arrayToSort.Length - 1; i++)
+//			{
+//				int minimumIndex = i;
+				
+//				for (int j = i + 1; j < arrayToSort.Length; j++)
+//				{
+//					if (arrayToSort[j] < arrayToSort[minimumIndex])
+//					{
+//						minimumIndex = j;
+//					}
+//				}
 
-namespace Sorting
-{
-    //change
-    public class SelectionSort : ISortable
-    {
-        public int[] Sort(int[] arrayToSort)
-        {
-            List<int> unsortedList = new List<int>(arrayToSort);
-            List<int> sortedList = new List<int>();
+//				if (minimumIndex != i)
+//				{
+//					int previousValue = arrayToSort[i];
+//					arrayToSort[i] = arrayToSort[minimumIndex];
+//					arrayToSort[minimumIndex] = previousValue;
+//				}
+//			}
 
-            while (unsortedList.Count > 0)
-            {
-                int smallestInt = unsortedList.Min();
-                sortedList.Add(smallestInt);
-                unsortedList.Remove(smallestInt);
-            }
-
-            return sortedList.ToArray();
-        }
-    }
-}
+//			return arrayToSort;
+//		}
+//	}
+//}

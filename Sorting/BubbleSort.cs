@@ -1,27 +1,28 @@
 ﻿namespace Sorting
 {
-    public class BubbleSort : ISortable
+	public class BubbleSort<T> : ISortable<T>
 	{
-		public int[] Sort(int[] listToSort)
+		public T[] Sort(T[] arrayToSort, IComparer<T> comparer)
 		{
 			bool isListSorted = true;
 
-			for (int i = 0; i < listToSort.Length - 2; i++)
+			for (int i = 0; i < arrayToSort.Length - 2; i++)
 			{
-				int currentValue = listToSort[i];
-				int nextValue = listToSort[i + 1];
+				T currentValue = arrayToSort[i];
+				T nextValue = arrayToSort[i + 1];
 
-				if (currentValue > nextValue)
+				int comparison = comparer.Compare(currentValue, nextValue);
+				if (comparison > 0)
 				{
 					isListSorted = false;
-					listToSort[i] = nextValue;
-					listToSort[i + 1] = currentValue;
+					arrayToSort[i] = nextValue;
+					arrayToSort[i + 1] = currentValue;
 				}
 			}
 
-			if (isListSorted) return listToSort;
+			if (isListSorted) return arrayToSort;
 
-			return (Sort(listToSort));
+			return Sort(arrayToSort, comparer);
 		}
 	}
 }
