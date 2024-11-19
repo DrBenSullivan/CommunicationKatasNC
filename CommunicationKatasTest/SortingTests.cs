@@ -7,26 +7,32 @@ namespace CommunicationKatasTest
 	{
 		private BubbleSort bubbleSort = new BubbleSort();
 		private SelectionSort selectionSort = new SelectionSort();
-		[Test]
-		public void BubbleSortTest()
+
+		public static TestCaseData[] sortingTestData =
+		[
+			new( new[] { 1,2,3 }, new[] { 1,2,3 } ),
+			new( new[] { 3,2,1 }, new[] { 1,2,3 } ),
+			new( new[] { 10,9,8,7,6,5,4,3,2,1 }, new[] { 1,2,3,4,5,6,7,8,9,10 } )
+		];
+
+		[TestCaseSource(nameof(sortingTestData))]
+		public void BubbleSortTest(int[] input, int[] expectedResult)
 		{
-			var result1 = bubbleSort.Sort([1, 2, 3]);
-			var result2 = bubbleSort.Sort([3, 2, 1]);
-			var result3 = bubbleSort.Sort([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]);
-			result1.Should().BeEquivalentTo([1, 2, 3]);
-			result2.Should().BeEquivalentTo([1, 2, 3]);
-			result3.Should().BeEquivalentTo([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+			// Act
+			var actualResult = bubbleSort.Sort(input);
+
+			// Assert
+			actualResult.Should().BeEquivalentTo(expectedResult);
 		}
 
-		[Test]
-		public void SelectionSortTest()
+		[TestCaseSource(nameof(sortingTestData))]
+		public void SelectionSortTest(int[] input, int[] expectedResult)
 		{
-			var result1 = selectionSort.Sort([1, 2, 3]);
-			var result2 = selectionSort.Sort([3, 2, 1]);
-			var result3 = selectionSort.Sort([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]);
-			result1.Should().BeEquivalentTo([1, 2, 3]);
-			result2.Should().BeEquivalentTo([1, 2, 3]);
-			result3.Should().BeEquivalentTo([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+			// Act
+			var actualResult = selectionSort.Sort(input);
+
+			// Assert
+			actualResult.Should().BeEquivalentTo(expectedResult);
 		}
 	}
 }

@@ -16,11 +16,11 @@ namespace CommunicationKatasTest
 
 		private static TestCaseData[] feedbackData =>
 		[
-			new TestCaseData(new[] { Feedback.LIKE, Feedback.DISLIKE }, Feedback.NEUTRAL),
-			new TestCaseData(new[] { Feedback.LIKE }, Feedback.LIKE),
-			new TestCaseData(new[] { Feedback.DISLIKE, Feedback.DISLIKE }, Feedback.NEUTRAL),
-			new TestCaseData(Array.Empty<Feedback>(), Feedback.NEUTRAL),
-			new TestCaseData(
+			new (new[] { Feedback.LIKE, Feedback.DISLIKE }, Feedback.NEUTRAL),
+			new (new[] { Feedback.LIKE }, Feedback.LIKE),
+			new (new[] { Feedback.DISLIKE, Feedback.DISLIKE }, Feedback.NEUTRAL),
+			new (Array.Empty<Feedback>(), Feedback.NEUTRAL),
+			new (
 				new[] { Feedback.LIKE, Feedback.DISLIKE, Feedback.DISLIKE, Feedback.LIKE, Feedback.DISLIKE, Feedback.DISLIKE, Feedback.LIKE },
 				Feedback.LIKE
 			)
