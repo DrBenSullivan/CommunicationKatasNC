@@ -27,5 +27,14 @@ namespace CommunicationKatas
 
             return result;
         }
+
+        public double GetMean(double[] numbers)
+        {
+            if (numbers.Length == 0) return 0;
+
+            double total = 0;
+            foreach (double number in numbers) { total += number; }
+            return total / numbers.Length;
+        }
     }
 }

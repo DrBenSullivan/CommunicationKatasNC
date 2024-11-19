@@ -32,5 +32,17 @@ namespace CommunicationKatasTest
             result6.Should().Be(0);
             result7.Should().Be(2);
         }
+
+        [Test]
+        public void GetMeanTest()
+        {
+            double result1 = testManipulator.GetMean([1, 2, 3]); // Should be 2
+            double result2 = testManipulator.GetMean([40, 16, 5, 8]); // Should be 17.25
+            double result3 = testManipulator.GetMean([]); // Should be 0
+
+            result1.Should().Be(2);
+            result2.Should().Be(17.25);
+            result3.Should().Be(0);
+        }
     }
 }
