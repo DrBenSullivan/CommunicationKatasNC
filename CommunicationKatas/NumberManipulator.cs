@@ -36,5 +36,17 @@ namespace CommunicationKatas
             foreach (double number in numbers) { total += number; }
             return total / numbers.Length;
         }
+
+        public int GetAsciiSum(string str)
+        {
+            int total = 0;
+
+            foreach (char c in str) 
+            { 
+                if (Char.IsAsciiDigit(c) || Char.IsAsciiLetter(c)) total += (int)c;
+            }
+
+            return total;
+        }
     }
 }

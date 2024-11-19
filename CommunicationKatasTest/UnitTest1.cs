@@ -44,5 +44,21 @@ namespace CommunicationKatasTest
             result2.Should().Be(17.25);
             result3.Should().Be(0);
         }
+
+        [Test]
+        public void GetAsciiSumTest()
+        {
+            int result1 = testManipulator.GetAsciiSum("northcoders"); // should be 1195
+            int result2 = testManipulator.GetAsciiSum("Northcoders"); // should be 1163
+            int result3 = testManipulator.GetAsciiSum("a"); // should be 97
+            int result4 = testManipulator.GetAsciiSum(""); // should be 0
+            int result5 = testManipulator.GetAsciiSum("^£&*^£&a^&"); // should be 97
+
+            result1.Should().Be(1195);
+            result2.Should().Be(1163);
+            result3.Should().Be(97);
+            result4.Should().Be(0);
+            result5.Should().Be(97);
+        }
     }
 }
