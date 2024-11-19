@@ -92,22 +92,46 @@ namespace CommunicationKatasTest
 			actualResult.Should().BeEquivalentTo(expectedResult);
 		}
 
-		//public static TestCaseData[] insertionSortTestData =
-		//[
-		//	new( new[] { 1,2,3 }, new[] { 1,2,3 } ),
-		//	new( new[] { 3,2,1 }, new[] { 1,2,3 } ),
-		//	new( new[] { 10,9,8,7,6,5,4,3,2,1 }, new[] { 1,2,3,4,5,6,7,8,9,10 } )
-		//];
+		#region setup
+		public static TestCaseData[] insertionSortIntTestData =
+		[
+			new( new[] { 1,2,3 }, Comparer<int>.Default, new[] { 1,2,3 } ),
+			new( new[] { 3,2,1 }, Comparer<int>.Default, new[] { 1,2,3 } ),
+			new( new[] { 10,9,8,7,6,5,4,3,2,1 }, Comparer<int>.Default, new[] { 1,2,3,4,5,6,7,8,9,10 } )
+		];
+		#endregion
+		[TestCaseSource(nameof(insertionSortIntTestData))]
+		public void InsertionSortTest(int[] input, IComparer<int> comparer, int[] expectedResult)
+		{
+			// Arrange
+			InsertionSort<int> insertionSort = new ();
 
-		//[TestCaseSource(nameof(insertionSortTestData))]
-		//public void InsertionSortTest(int[] input, int[] expectedResult)
-		//{
-		//	// Act
-		//	var actualResult = insertionSort.Sort(input);
+			// Act
+			var actualResult = insertionSort.Sort(input, comparer);
 
-		//	// Assert
-		//	actualResult.Should().BeEquivalentTo(expectedResult);
-		//}
+			// Assert
+			actualResult.Should().BeEquivalentTo(expectedResult);
+		}
 
+		#region setup
+		public static TestCaseData[] insertionSortPersonTestData =
+		[
+			new( new[] { person1, person2, person3 }, new HeightComparison(), new[] { person1, person2, person3 } ),
+			new( new[] { person1, person2, person3 }, new AgeComparison(), new[] { person3, person1, person2 } ),
+			new( new[] { person3, person1, person2 }, new IdComparison(), new[] { person1, person2, person3 } )
+		];
+		#endregion
+		[TestCaseSource(nameof(insertionSortPersonTestData))]
+		public void InsertionSortTest(Person[] input, IComparer<Person> comparer, Person[] expectedResult)
+		{
+			// Arrange
+			InsertionSort<Person> insertionSort = new ();
+
+			// Act
+			var actualResult = insertionSort.Sort(input, comparer);
+
+			// Assert
+			actualResult.Should().BeEquivalentTo(expectedResult);
+		}
 	}
 }
