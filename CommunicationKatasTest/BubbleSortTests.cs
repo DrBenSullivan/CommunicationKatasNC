@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using Sorting;
 
 namespace CommunicationKatasTest
 {
