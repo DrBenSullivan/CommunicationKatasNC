@@ -7,6 +7,7 @@ using System.Linq;
 
 namespace Sorting
 {
+    //change
     public class SelectionSort : ISortable
     {
         public int[] Sort(int[] arrayToSort)
