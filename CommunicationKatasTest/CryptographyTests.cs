@@ -5,19 +5,23 @@ namespace CommunicationKatasTest
 {
 	internal class CryptographyTests
 	{
-		Cryptography testEncoder = new Cryptography();
+		Cryptography cryptography = new();
 
-		[Test]
-		public void ROT13Test()
+		public static TestCaseData[] ROT13TestData =
+		[
+			new("northcoders", "abegupbqref"),
+			new("abegupbqref", "northcoders"),
+			new("I'm sure glad nobody can read my secret ROT13 code.", "V'z fher tynq abobql pna ernq zl frperg EBG13 pbqr.")
+		];
+
+		[TestCaseSource(nameof(ROT13TestData))]
+		public void ROT13EncoderTest_ReturnsExpectedResult(string input, string expectedResult)
 		{
-			string result1 = testEncoder.ROT13Encoder("northcoders"); // should be "abegupbqref"
-			string result2 = testEncoder.ROT13Encoder("abegupbqref"); // should be "northcoders"
-			string result3 = testEncoder.ROT13Encoder("I'm sure glad nobody can read my secret ROT13 code."); // should return "V'z fher tynq abobql pna ernq zl frperg EBG13 pbqr."
+			// Act
+			string actualResult = cryptography.ROT13Encoder(input);
 
-			result1.Should().Be("abegupbqref");
-			result2.Should().Be("northcoders");
-			result3.Should().Be("V'z fher tynq abobql pna ernq zl frperg EBG13 pbqr.");
+			// Assert
+			actualResult.Should().Be(expectedResult);
 		}
-
 	}
 }
