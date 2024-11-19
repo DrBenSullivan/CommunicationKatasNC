@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sorting
+﻿public interface ISortable
 {
-    internal interface ISortable
-    {
-        int[] Sort(int[] arrayToSort);
-    }
+    public int[] Sort();
 }

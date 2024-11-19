@@ -1,6 +1,6 @@
-﻿namespace CommunicationKatas
+﻿namespace Sorting
 {
-	public class BubbleSort
+    public class BubbleSort : ISortable
 	{
 		public int[] Sort(int[] listToSort)
 		{
