@@ -14,34 +14,26 @@ namespace CommunicationKatasTest
 			studentFeedback = new StudentFeedback();
 		}
 
-		[Test]
-		public void ResolveFeedBackFromClicks_ReturnsExpectedValue()
-		{
-			// Arrange
-			Feedback[] input1 = [Feedback.LIKE, Feedback.DISLIKE];
-			Feedback expectedResult1 = Feedback.NEUTRAL;
-			Feedback[] input2 = [Feedback.LIKE];
-			Feedback expectedResult2 = Feedback.LIKE;
-			Feedback[] input3 = [Feedback.DISLIKE, Feedback.DISLIKE];
-			Feedback expectedResult3 = Feedback.NEUTRAL;
-			Feedback[] input4 = [];
-			Feedback expectedResult4 = Feedback.NEUTRAL;
-			Feedback[] input5 = [Feedback.LIKE, Feedback.DISLIKE, Feedback.DISLIKE, Feedback.LIKE, Feedback.DISLIKE, Feedback.DISLIKE, Feedback.LIKE];
-			Feedback expectedResult5 = Feedback.LIKE;
+		private static TestCaseData[] feedbackData => 
+		[
+			new TestCaseData(new[] { Feedback.LIKE, Feedback.DISLIKE }, Feedback.NEUTRAL),
+			new TestCaseData(new[] { Feedback.LIKE }, Feedback.LIKE),
+			new TestCaseData(new[] { Feedback.DISLIKE, Feedback.DISLIKE }, Feedback.NEUTRAL),
+			new TestCaseData(Array.Empty<Feedback>(), Feedback.NEUTRAL),
+			new TestCaseData(
+				new[] { Feedback.LIKE, Feedback.DISLIKE, Feedback.DISLIKE, Feedback.LIKE, Feedback.DISLIKE, Feedback.DISLIKE, Feedback.LIKE }, 
+				Feedback.LIKE
+			)
+		];
 
+		[TestCaseSource(nameof(feedbackData))]
+		public void ResolveFeedBackFromClicks_ReturnsExpectedValue(Feedback[] input, Feedback expectedResult)
+		{
 			// Act
-			Feedback actualResult1 = studentFeedback.ResolveFeedbackFromClicks(input1);
-			Feedback actualResult2 = studentFeedback.ResolveFeedbackFromClicks(input2);
-			Feedback actualResult3 = studentFeedback.ResolveFeedbackFromClicks(input3);
-			Feedback actualResult4 = studentFeedback.ResolveFeedbackFromClicks(input4);
-			Feedback actualResult5 = studentFeedback.ResolveFeedbackFromClicks(input5);
+			Feedback actualResult = studentFeedback.ResolveFeedbackFromClicks(input);
 
 			// Assert
-			actualResult1.Should().Be(expectedResult1);
-			actualResult2.Should().Be(expectedResult2);
-			actualResult3.Should().Be(expectedResult3);
-			actualResult4.Should().Be(expectedResult4);
-			actualResult5.Should().Be(expectedResult5);
+			actualResult.Should().Be(expectedResult);
 		}
 	}
 }
