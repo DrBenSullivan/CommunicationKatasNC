@@ -1,4 +1,4 @@
 ﻿public interface ISortable
 {
-    public int[] Sort();
+    public int[] Sort(int[] arrayToSort);
 }
