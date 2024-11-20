@@ -101,7 +101,7 @@ namespace CommunicationKatasTest
 		];
 		#endregion
 		[TestCaseSource(nameof(insertionSortIntTestData))]
-		public void InsertionSortTest(int[] input, IComparer<int> comparer, int[] expectedResult)
+		public void InsertionSortIntTest(int[] input, IComparer<int> comparer, int[] expectedResult)
 		{
 			// Arrange
 			InsertionSort<int> insertionSort = new ();
@@ -126,6 +126,48 @@ namespace CommunicationKatasTest
 		{
 			// Arrange
 			InsertionSort<Person> insertionSort = new ();
+
+			// Act
+			var actualResult = insertionSort.Sort(input, comparer);
+
+			// Assert
+			actualResult.Should().BeEquivalentTo(expectedResult);
+		}
+
+		#region setup
+		public static TestCaseData[] mergeSortIntTestData =
+		[
+			new( new[] { 1,2,3 }, Comparer<int>.Default, new[] { 1,2,3 } ),
+			new( new[] { 3,2,1 }, Comparer<int>.Default, new[] { 1,2,3 } ),
+			new( new[] { 10,9,8,7,6,5,4,3,2,1 }, Comparer<int>.Default, new[] { 1,2,3,4,5,6,7,8,9,10 } )
+		];
+		#endregion
+		[TestCaseSource(nameof(mergeSortIntTestData))]
+		public void MergeSortIntTest(int[] input, IComparer<int> comparer, int[] expectedResult)
+		{
+			// Arrange
+			MergeSort<int> insertionSort = new ();
+
+			// Act
+			var actualResult = insertionSort.Sort(input, comparer);
+
+			// Assert
+			actualResult.Should().BeEquivalentTo(expectedResult);
+		}
+
+		#region setup
+		public static TestCaseData[] mergeSortPersonTestData =
+		[
+			new( new[] { person1, person2, person3 }, new HeightComparison(), new[] { person1, person2, person3 } ),
+			new( new[] { person1, person2, person3 }, new AgeComparison(), new[] { person3, person1, person2 } ),
+			new( new[] { person3, person1, person2 }, new IdComparison(), new[] { person1, person2, person3 } )
+		];
+		#endregion
+		[TestCaseSource(nameof(insertionSortPersonTestData))]
+		public void mergeSortTest(Person[] input, IComparer<Person> comparer, Person[] expectedResult)
+		{
+			// Arrange
+			MergeSort<Person> insertionSort = new ();
 
 			// Act
 			var actualResult = insertionSort.Sort(input, comparer);
